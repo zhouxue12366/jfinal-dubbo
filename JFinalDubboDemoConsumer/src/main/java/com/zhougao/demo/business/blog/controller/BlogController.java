@@ -4,15 +4,14 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.zhougao.demo.business.blog.interceptor.BlogInterceptor;
 import com.zhougao.demo.business.blog.validator.BlogValidator;
-//import com.zhougao.demo.consumer.plugin.Inject;
-import com.zhougao.demo.consumer.plugin.IocInterceptor;
+import com.zhougao.demo.consumer.factory.controller.annotation.Inject;
 import com.zhougao.demo.model.Blog;
 import com.zhougao.demo.service.BlogService;
 
-@Before({ BlogInterceptor.class, IocInterceptor.class })
+@Before({ BlogInterceptor.class})
 public class BlogController extends Controller {
 
-//	@Inject.BY_NAME
+	@Inject.BY_NAME
 	private BlogService blogService;
 
 	public void index() {
