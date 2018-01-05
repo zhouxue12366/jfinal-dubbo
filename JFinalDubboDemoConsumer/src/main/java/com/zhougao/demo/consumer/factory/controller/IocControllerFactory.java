@@ -19,9 +19,8 @@ import com.zhougao.demo.consumer.factory.controller.ioc.IocKit;
  * @version V1.0
  */
 public class IocControllerFactory extends ControllerFactory {
-
-	public Controller getController(Class<? extends Controller> controllerClass)
-			throws InstantiationException, IllegalAccessException {
+	
+	public Controller getController(Class<? extends Controller> controllerClass)throws InstantiationException, IllegalAccessException {
 		Controller target = controllerClass.newInstance();
 		Field[] fields = controllerClass.getDeclaredFields();
 		for (Field field : fields) {
@@ -33,7 +32,7 @@ public class IocControllerFactory extends ControllerFactory {
 			} else {
 				continue;
 			}
-
+			
 			try {
 				if (bean != null) {
 					field.setAccessible(true);
@@ -43,7 +42,6 @@ public class IocControllerFactory extends ControllerFactory {
 				throw new RuntimeException(e);
 			}
 		}
-
 		return target;
 	}
 

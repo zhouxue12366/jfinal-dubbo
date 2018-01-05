@@ -9,6 +9,9 @@
 
 	<!-- 提供方应用信息，用于计算依赖关系 -->
 	<dubbo:application name="jfinal-duboo-demo-provider" />
+	
+	<!-- 使用注解方式暴露接口,扫描注解包路径，多个包用逗号分隔，不填pacakge表示当前ApplicationContext中所有的类 -->  
+    <dubbo:annotation package="com.zhougao.demo" />  
 
 	<!-- 使用multicast广播注册中心暴露服务地址 -->
 	<dubbo:registry protocol="multicast" address="zookeeper://127.0.0.1:2181" />
@@ -16,16 +19,5 @@
 	<!-- 用dubbo协议在20880端口暴露服务，注意本机IP要设置正确 -->
 	<dubbo:protocol name="dubbo" host="127.0.0.1" port="20880" />
 
-	<!-- 声明Blog的Dao实例 -->
-	<bean id="blogDao" class="com.zhougao.demo.model.Blog" />
-
-	<!-- 声明BlogService服务实例 -->
-	<bean id="blogService" class="com.zhougao.demo.service.impl.BlogServiceImpl">
-		<!-- 将Blog的Dao实例注入 -->
-		<property name="blogDao" ref="blogDao" />
-	</bean>
-
-	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="com.zhougao.demo.service.BlogService" ref="blogService" />
 
 </beans>

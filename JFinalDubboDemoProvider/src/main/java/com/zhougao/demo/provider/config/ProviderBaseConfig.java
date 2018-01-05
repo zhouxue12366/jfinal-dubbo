@@ -1,5 +1,7 @@
 package com.zhougao.demo.provider.config;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.alibaba.druid.filter.stat.StatFilter;
 import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.wall.WallFilter;
@@ -17,7 +19,6 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.template.Engine;
 import com.zhougao.demo.model.Blog;
-import com.zhougao.demo.provider.plugin.SpringPlugin;
 
 public class ProviderBaseConfig extends JFinalConfig {
 
@@ -70,17 +71,20 @@ public class ProviderBaseConfig extends JFinalConfig {
 		arp.setDialect(new MysqlDialect());
 
 		// 配置Spring插件
-		SpringPlugin sp = new SpringPlugin("classpath:applicationContext.xml");
+//		SpringPlugin sp = new SpringPlugin("classpath:applicationContext.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"classpath:provider.xml"});
+        
 		
 		// 手动启动各插件
 		dp.start();
 		arp.start();
-		sp.start();
+//		sp.start();
+		context.start();
 		
 		// 加入各插件到Config
 		me.add(dp);
 		me.add(arp);
-		me.add(sp);
+//		me.add(sp);
 
 	}
 

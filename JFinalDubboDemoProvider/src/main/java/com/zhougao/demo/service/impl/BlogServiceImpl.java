@@ -1,12 +1,14 @@
 package com.zhougao.demo.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.jfinal.plugin.activerecord.Page;
 import com.zhougao.demo.model.Blog;
 import com.zhougao.demo.service.BlogService;
 
+@Service
 public class BlogServiceImpl implements BlogService {
 
-	private Blog blogDao;
+	private Blog blogDao = new Blog();
 	
 	public Page<Blog> paginate(int pageNumber, int pageSize) {
 		return blogDao.paginate(pageNumber, pageSize, "select *", "from blog order by id asc");

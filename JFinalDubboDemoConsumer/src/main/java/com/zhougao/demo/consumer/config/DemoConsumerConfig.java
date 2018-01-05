@@ -1,5 +1,7 @@
 package com.zhougao.demo.consumer.config;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -14,6 +16,7 @@ import com.zhougao.demo.consumer.plugin.SpringPlugin;
 
 /**
  * consumer主配置类
+ * 
  * @Title DemoConsumerConfig.java
  * @Description TODO
  * @Company: 软岛
@@ -25,12 +28,13 @@ public class DemoConsumerConfig extends JFinalConfig {
 
 	@Override
 	public void configConstant(Constants me) {
-		me.setControllerFactory(new IocControllerFactory ());
+		me.setControllerFactory(new IocControllerFactory());
 		me.setDevMode(true);
 	}
 
 	@Override
 	public void configHandler(Handlers me) {
+
 	}
 
 	@Override
@@ -40,6 +44,9 @@ public class DemoConsumerConfig extends JFinalConfig {
 	@Override
 	public void configPlugin(Plugins me) {
 		me.add(new SpringPlugin("classpath:applicationContext.xml"));
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "classpath:consumer.xml" });
+//		context.start();
+
 	}
 
 	@Override
@@ -50,22 +57,13 @@ public class DemoConsumerConfig extends JFinalConfig {
 
 	@Override
 	public void afterJFinalStart() {
-//		Map<String, Class<?>> blogColumnMap = new HashMap<String, Class<?>>();
-//		blogColumnMap.put("id", Integer.class);
-//		blogColumnMap.put("title", String.class);
-//		blogColumnMap.put("content", String.class);
-//
-//		TableInitKit.init("blog", Blog.class, blogColumnMap);
-//		
-//		System.out.println("Blog表字段模拟完成。");
-		
 		System.out.println("consumer for Dubbo启动完成。");
 	}
 
 	@Override
 	public void configEngine(Engine arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

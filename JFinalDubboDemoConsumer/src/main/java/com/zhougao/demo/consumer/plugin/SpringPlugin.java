@@ -21,9 +21,7 @@ public class SpringPlugin implements IPlugin {
 	private ApplicationContext ctx;
 	
 	/**
-
 	 * Use configuration under the path of WebRoot/WEB-INF.
-
 	 */
 	public SpringPlugin() {
 	}
@@ -36,6 +34,7 @@ public class SpringPlugin implements IPlugin {
 		this.ctx = ctx;
 	}
 	
+	@Override
 	public boolean start() {
 		if (ctx != null)
 			IocKit.ctx = ctx;
@@ -46,6 +45,7 @@ public class SpringPlugin implements IPlugin {
 		return true;
 	}
 	
+	@Override
 	public boolean stop() {
 		return true;
 	}
