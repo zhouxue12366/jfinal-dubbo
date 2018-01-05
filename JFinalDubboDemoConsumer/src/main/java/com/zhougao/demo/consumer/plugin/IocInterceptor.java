@@ -35,7 +35,7 @@ public class IocInterceptor implements Interceptor {
 			if (field.isAnnotationPresent(Inject.BY_NAME.class))
 				bean =IocKit.getBean(field.getName());
 			else if (field.isAnnotationPresent(Inject.BY_TYPE.class))
-				bean = IocKit.getBeanByType(field.getType());
+				bean = IocKit.getBean(field.getType());
 			else
 				continue;
 

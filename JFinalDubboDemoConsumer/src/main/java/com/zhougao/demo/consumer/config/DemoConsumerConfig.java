@@ -1,7 +1,5 @@
 package com.zhougao.demo.consumer.config;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -44,7 +42,7 @@ public class DemoConsumerConfig extends JFinalConfig {
 	@Override
 	public void configPlugin(Plugins me) {
 		me.add(new SpringPlugin("classpath:applicationContext.xml"));
-//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "classpath:consumer.xml" });
+//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"classpath:consumer.xml"});
 //		context.start();
 
 	}

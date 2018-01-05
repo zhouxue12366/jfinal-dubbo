@@ -41,7 +41,7 @@ public class IocKit {
 	 * @return 
 	 * @since 2018年1月3日 下午5:57:22
 	 */
-	public static Object getBeanByType(Class<?> beanName) {
+	public static Object getBean(Class<?> beanName) {
 		Object target = ctx.getBean(beanName);
 		if (target == null) {
 			return null;
